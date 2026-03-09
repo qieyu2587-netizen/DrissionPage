@@ -91,6 +91,9 @@ class ChromiumBase(BasePage):
                 for k, t in enumerate(tabs):
                     if t[1] == 'chrome://privacy-sandbox-dialog/notice':
                         dialog = k
+                    # 处理页面加载到最低部
+                    elif t[1] == 'chrome://newtab/':
+                        target_id = t[0]
                     elif not target_id:
                         target_id = t[0]
 
@@ -948,3 +951,4 @@ def close_privacy_dialog(page, tid):
 
     except:
         pass
+
